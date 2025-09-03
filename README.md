@@ -7,55 +7,83 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+# Sistema de Gestión de Empleados y Áreas
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Acerca del sistema
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Para su desarrollo, se usaron las tecnologías Laravel, InertiaJs y React
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Requisitos
 
-## Learning Laravel
+- XAMPP (Instalará la última versión de PHP y la base de datos MYSQL)
+- NodeJs (La última versión hasta la fecha)
+- Composer (La última versión hasta la fecha)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Pasos para instalación y montaje en su computadora
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+**Clonar el repositorio en la carpeta "htdocs" de su carpeta de XAMPP**
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+```
+git clone <URL_DEL_REPOSITORIO>
+cd <NOMBRE_DEL_PROYECTO>
+```
 
-## Laravel Sponsors
+**Instalar Dependencias de PHP con Composer:**
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Dentro del directorio del proyecto, ejecuta:
 
-### Premium Partners
+```bash
+composer install
+```
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+**Configurar el Archivo .env:**
 
-## Contributing
+Copia el archivo `.env.example` a `.env`:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```bash
+cp .env.example .env
+```
 
-## Code of Conduct
+Luego, edita el archivo `.env` con tu editor preferido para configurar tu entorno, incluyendo la conexión a la base de datos. Sigue esta configuración
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=pruebatecnica
+DB_USERNAME=root
+DB_PASSWORD=
 
-## Security Vulnerabilities
+**Generar la Clave de la Aplicación:**
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```bash
+php artisan key:generate
+```
 
-## License
+**Instalar Dependencias de Node.js:**
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```bash
+npm install
+```
+
+**Compilar Assets:**
+
+ejecuta:
+
+```bash
+npm run dev
+```
+Para configurar la base de datos según las migraciones de Laravel, ejecuta:
+
+```bash
+php artisan migrate
+```
+
+### Servidor de Desarrollo
+
+Para iniciar el servidor de desarrollo de Laravel y acceder a tu proyecto en un navegador, ejecuta:
+
+```bash
+php artisan serve
+```
+
+Esto iniciará un servidor de desarrollo accesible generalmente en `http://localhost:8000`.
