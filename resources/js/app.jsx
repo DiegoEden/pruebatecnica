@@ -3,12 +3,25 @@ import { createRoot } from 'react-dom/client';
 import { createInertiaApp } from '@inertiajs/react';
 import AreasIndex from './Pages/Areas/Index.jsx';
 import EmpleadosIndex from './Pages/Empleados/Index.jsx';
-//import './bootstrap';
-//import '../css/app.css';
+import Edit from './Pages/Empleados/Edit.jsx';
+
+import axios from "axios";
+
+axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
+
+const token = document
+  .querySelector('meta[name="csrf-token"]')
+  ?.getAttribute("content");
+
+if (token) {
+  axios.defaults.headers.common["X-CSRF-TOKEN"] = token;
+}
+
 
 const pages = {
   'Areas/Index': AreasIndex,
   'Empleados/Index': EmpleadosIndex,
+  'Empleados/Edit': Edit,
 };
 
 
