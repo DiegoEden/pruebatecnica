@@ -2,7 +2,7 @@ import { useForm, router } from "@inertiajs/react";
 import { useState } from "react";
 import { PencilSquare, Trash, Check, X } from "react-bootstrap-icons";
 
-export default function Index({ areas, errors }) {
+export default function Index({ areas }) {
   const { data, setData, post, put, reset } = useForm({ nombre: "" });
   const [editId, setEditId] = useState(null);
   const [editNombre, setEditNombre] = useState("");
@@ -47,8 +47,8 @@ export default function Index({ areas, errors }) {
                       </>
                     ) : (
                       <>
-                        <button onClick={() => { setEditId(a.id); setEditNombre(a.nombre); }} className="btn btn-warning btn-sm text-white me-1"><PencilSquare /></button>
-                        <button onClick={() => handleDelete(a.id)} className="btn btn-danger btn-sm"><Trash /></button>
+                        <button onClick={() => { setEditId(a.id); setEditNombre(a.nombre); }} className="btn btn-warning btn-sm text-dark me-1">Editar</button>
+                        <button onClick={() => handleDelete(a.id)} className="btn btn-danger btn-sm">Eliminar</button>
                       </>
                     )}
                   </td>

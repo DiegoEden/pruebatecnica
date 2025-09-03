@@ -13,12 +13,17 @@ class AreaController extends Controller
         $areas = Area::all();
         return Inertia::render('Areas/Index', compact('areas'));
     }
-
     public function store(Request $request)
     {
-        $request->validate(['nombre' => 'required|string|max:255']);
+        $request->validate([
+            'nombre' => 'required|string|max:255|unique:areas,nombre',
+        ], [
+            'nombre.unique' => 'El nombre ya existe, ingrese uno diferente.',
+        ]);
+
         Area::create($request->all());
-        return redirect()->back();
+
+        return redirect()->back()->with('success', 'Área creada correctamente.');
     }
 
     public function update(Request $request, Area $area)

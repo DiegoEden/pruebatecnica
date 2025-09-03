@@ -2,6 +2,7 @@ import { useForm, Link, router } from "@inertiajs/react";
 
 export default function Edit({ empleado, areas }) {
   const { data, setData, put, errors } = useForm({
+    id: empleado.id || "",
     nombre: empleado.nombre || "",
     apellido: empleado.apellido || "",
     email: empleado.email || "",
@@ -10,7 +11,7 @@ export default function Edit({ empleado, areas }) {
 
   const submit = (e) => {
     e.preventDefault();
-    put(`/empleados/${empleado.id}`);
+    put(`/empleados/update/${empleado.id}`);
   };
 
   return (
@@ -19,7 +20,9 @@ export default function Edit({ empleado, areas }) {
 
       <div className="card shadow-sm">
         <div className="card-body">
-          <form onSubmit={submit} className="row g-3" method="put"> 
+          <form onSubmit={submit} className="row g-3" method="put">
+            <input type="hidden" name="_method" value="put" /> 
+            <input type="hidden" name="id" value={data.id} />
             <div className="col-md-6">
               <label className="form-label">Nombre</label>
               <input type="text" value={data.nombre} onChange={(e) => setData("nombre", e.target.value)} className="form-control" />
